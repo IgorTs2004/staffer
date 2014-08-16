@@ -1,7 +1,7 @@
-package igorts2004.servlets;
+package igorts2004.staffer.servlet;
 
-import igorts2004.staffer.Employee;
-import igorts2004.staffer.EmployeeService;
+import igorts2004.staffer.entity.Employee;
+import igorts2004.staffer.service.EmployeeService;
 
 import java.io.IOException;
 import java.io.PrintWriter;

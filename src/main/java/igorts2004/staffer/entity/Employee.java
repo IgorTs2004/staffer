@@ -1,4 +1,4 @@
-package igorts2004.staffer;
+package igorts2004.staffer.entity;
 
 public class Employee {
 

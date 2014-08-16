@@ -1,4 +1,7 @@
-package igorts2004.staffer;
+package igorts2004.staffer.service;
+
+import igorts2004.staffer.dao.EmployeeDao;
+import igorts2004.staffer.entity.Employee;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;

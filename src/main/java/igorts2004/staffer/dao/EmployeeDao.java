@@ -1,6 +1,6 @@
-package igorts2004.staffer;
+package igorts2004.staffer.dao;
 
-import java.sql.SQLException;
+import igorts2004.staffer.entity.Employee;
 import java.util.List;
 
 public interface EmployeeDao {

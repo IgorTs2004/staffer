@@ -8,7 +8,7 @@
   	<servlet-name>SimpleServlet</servlet-name>
   	<display-name>SimpleServlet</display-name>
   	<description></description>
-  	<servlet-class>igorts2004.servlets.SimpleServlet</servlet-class>
+  	<servlet-class>igorts2004.staffer.servlet.SimpleServlet</servlet-class>
   </servlet>
   <servlet-mapping>
   	<servlet-name>SimpleServlet</servlet-name>

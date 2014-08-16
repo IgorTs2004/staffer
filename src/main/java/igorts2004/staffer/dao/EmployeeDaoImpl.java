@@ -1,6 +1,7 @@
-package igorts2004.staffer;
+package igorts2004.staffer.dao;
 
-import java.util.Arrays;
+import igorts2004.staffer.entity.Employee;
+
 import java.util.LinkedList;
 import java.util.List;
 import org.springframework.stereotype.Repository;
@@ -9,7 +10,6 @@ import javax.annotation.PreDestroy;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.ResultSet;
 
