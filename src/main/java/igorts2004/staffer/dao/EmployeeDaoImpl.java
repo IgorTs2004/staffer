@@ -68,4 +68,17 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		}
 	}
 	
+	@Override
+	public void deleteEmployee(Long id) {
+		final String sql = "DELETE FROM Employee WHERE id=?";
+		
+		try {
+			PreparedStatement statement = connection.prepareStatement(sql);
+			statement.setLong(1, id);
+			statement.executeUpdate();
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}		
+	}
+	
 }

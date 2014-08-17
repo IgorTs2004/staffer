@@ -18,8 +18,11 @@ public class StafferService {
 	}
 	
 	public Long addEmployee(String name) {
-		employeeDao.addEmployee(name);
-		return 0L;
+		return employeeDao.addEmployee(name);
+	}
+	
+	public void deleteEmployee(Long id) {
+		employeeDao.deleteEmployee(id);
 	}
 	
 }

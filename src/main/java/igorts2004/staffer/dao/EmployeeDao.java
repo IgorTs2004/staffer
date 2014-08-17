@@ -9,5 +9,7 @@ public interface EmployeeDao {
 	public List<Employee> getEmployeeList();
 	
 	public Long addEmployee(String name);
+	
+	public void deleteEmployee(Long id);
 
 }

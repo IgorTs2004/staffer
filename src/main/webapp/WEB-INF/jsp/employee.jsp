@@ -25,6 +25,7 @@
 			<tr>
 				<td>${employee.id}</td>
 				<td>${employee.name}</td>
+				<td><a href="employee/delete?id=${employee.id}">Delete</a></td>
 			</tr>
 		</c:forEach>
 	</table>

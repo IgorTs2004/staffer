@@ -14,13 +14,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/employee")
 public class EmployeeController {
 
 	@Autowired
 	private StafferService stafferService;
 
-	@RequestMapping(method = RequestMethod.GET)
+	@RequestMapping(value = "/employee", method = RequestMethod.GET)
 	public String employeeList(Model model) {
 		Date today = new Date();
 		model.addAttribute("today", today);
@@ -30,11 +29,17 @@ public class EmployeeController {
 		return "employee";
 	}
 
-	@RequestMapping(method = RequestMethod.POST)
-	public String addEmployee(@RequestParam("employeeName") String employeeName,
-			Model model) {
+	@RequestMapping(value = "/employee", method = RequestMethod.POST)
+	public String addEmployee(
+			@RequestParam("employeeName") String employeeName, Model model) {
 		stafferService.addEmployee(employeeName);
-		return employeeList(model);
+		return "redirect:/employee";
+	}
+
+	@RequestMapping(value = "/employee/delete", method = RequestMethod.GET)
+	public String deleteEmployee(@RequestParam("id") Long id) {
+		stafferService.deleteEmployee(id);
+		return "redirect:/employee";
 	}
 
 }
