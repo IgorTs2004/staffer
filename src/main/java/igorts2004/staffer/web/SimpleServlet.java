@@ -1,7 +1,7 @@
-package igorts2004.staffer.servlet;
+package igorts2004.staffer.web;
 
-import igorts2004.staffer.entity.Employee;
-import igorts2004.staffer.service.EmployeeService;
+import igorts2004.staffer.domain.Employee;
+import igorts2004.staffer.service.StafferService;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -33,8 +33,8 @@ public class SimpleServlet extends HttpServlet {
 
 	private void process(HttpServletRequest request,
 			HttpServletResponse response) throws IOException {
-		EmployeeService employeeService = context.getBean("employeeService",
-				EmployeeService.class);
+		StafferService employeeService = context.getBean("stafferService",
+				StafferService.class);
 		List<Employee> employeeList = employeeService.getEmployeeList();
 
 		response.setStatus(200);
