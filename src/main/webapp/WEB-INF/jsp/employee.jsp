@@ -1,6 +1,6 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page isELIgnored="false"%>
 
 <html>
 <head>
@@ -10,6 +10,12 @@
 <body>
 	<h2>This is employee.jsp</h2>
 	Today is <fmt:formatDate value="${today}" pattern="yyyy-MM-dd" />.
+
+	<form method="post">
+		Employee Name <input type="text" name="employeeName" value="${employeeName}" />
+		<input type="submit" value="Add" />
+	</form>
+
 	<table border="1">
 		<tr>
 			<th>id</th>

@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-//import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/employee")
@@ -24,10 +24,17 @@ public class EmployeeController {
 	public String employeeList(Model model) {
 		Date today = new Date();
 		model.addAttribute("today", today);
-		
+
 		List<Employee> employees = stafferService.getEmployeeList();
 		model.addAttribute("employees", employees);
 		return "employee";
+	}
+
+	@RequestMapping(method = RequestMethod.POST)
+	public String addEmployee(@RequestParam("employeeName") String employeeName,
+			Model model) {
+		stafferService.addEmployee(employeeName);
+		return employeeList(model);
 	}
 
 }

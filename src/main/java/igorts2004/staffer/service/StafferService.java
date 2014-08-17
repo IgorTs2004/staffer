@@ -17,5 +17,9 @@ public class StafferService {
 		return employeeDao.getEmployeeList();
 	}
 	
+	public Long addEmployee(String name) {
+		employeeDao.addEmployee(name);
+		return 0L;
+	}
 	
 }

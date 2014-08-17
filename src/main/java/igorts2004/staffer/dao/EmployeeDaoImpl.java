@@ -10,6 +10,7 @@ import javax.annotation.PreDestroy;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.sql.ResultSet;
 
@@ -52,4 +53,19 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	@Override
+	public Long addEmployee(String name) {
+		final String sql = "INSERT INTO Employee(name) VALUES (?)";
+		
+		try {
+			PreparedStatement statement = connection.prepareStatement(sql);
+			statement.setString(1, name);
+			statement.executeUpdate();
+			return null;
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	
 }
