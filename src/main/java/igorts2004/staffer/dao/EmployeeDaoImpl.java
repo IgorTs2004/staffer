@@ -23,19 +23,20 @@ public class EmployeeDaoImpl implements EmployeeDao {
     @Autowired
     private SessionFactory sessionFactory;	
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Employee> getEmployeeList() {
 		return sessionFactory.getCurrentSession().createQuery("from Employee").list();	
 	}
 	
 	@Override
-	public Long addEmployee(String name) {
+	public long addEmployee(String name) {
 		Employee employee = new Employee(0, name);
 		return (Long) sessionFactory.getCurrentSession().save(employee);
 	}
 	
 	@Override
-	public void deleteEmployee(Long id) {
+	public void deleteEmployee(long id) {
 		Employee contact = (Employee) sessionFactory.getCurrentSession().load(Employee.class, id);
         if (null != contact) {
             sessionFactory.getCurrentSession().delete(contact);
