@@ -4,6 +4,9 @@ import igorts2004.staffer.domain.Employee;
 
 import java.util.LinkedList;
 import java.util.List;
+
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
@@ -17,7 +20,29 @@ import java.sql.ResultSet;
 @Repository("employeeDao")
 public class EmployeeDaoImpl implements EmployeeDao {
 
-	private Connection connection;
+    @Autowired
+    private SessionFactory sessionFactory;	
+	
+	@Override
+	public List<Employee> getEmployeeList() {
+		return sessionFactory.getCurrentSession().createQuery("from Employee").list();	
+	}
+	
+	@Override
+	public Long addEmployee(String name) {
+		Employee employee = new Employee(0, name);
+		return (Long) sessionFactory.getCurrentSession().save(employee);
+	}
+	
+	@Override
+	public void deleteEmployee(Long id) {
+		Employee contact = (Employee) sessionFactory.getCurrentSession().load(Employee.class, id);
+        if (null != contact) {
+            sessionFactory.getCurrentSession().delete(contact);
+        }
+	}
+    
+	/*private Connection connection;
 
 	@PostConstruct
 	public void createDbConnection() throws Exception {
@@ -79,6 +104,6 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}		
-	}
+	}*/
 	
 }
