@@ -2,20 +2,11 @@ package igorts2004.staffer.dao;
 
 import igorts2004.staffer.domain.Employee;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import javax.annotation.PostConstruct;
-import javax.annotation.PreDestroy;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.Statement;
-import java.sql.ResultSet;
 
 @Repository("employeeDao")
 public class EmployeeDaoImpl implements EmployeeDao {
@@ -42,69 +33,5 @@ public class EmployeeDaoImpl implements EmployeeDao {
             sessionFactory.getCurrentSession().delete(contact);
         }
 	}
-    
-	/*private Connection connection;
-
-	@PostConstruct
-	public void createDbConnection() throws Exception {
-		final String driver = "com.mysql.jdbc.Driver";
-		final String url = "jdbc:mysql://localhost:3306/staffer";
-		final String user = "admin";
-		final String password = "admin";
-
-		Class.forName(driver);
-		connection = DriverManager.getConnection(url, user, password);
-	}
-
-	@PreDestroy
-	public void closeDbConnection() throws Exception {
-		connection.close();
-	}
-
-	@Override
-	public List<Employee> getEmployeeList() {
-		final String sql = "SELECT id, name FROM Employee";
-
-		try {
-			Statement statement = connection.createStatement();
-			ResultSet resultSet = statement.executeQuery(sql);
-			List<Employee> result = new LinkedList<>();
-			while (resultSet.next()) {
-				int id = resultSet.getInt("id");
-				String name = resultSet.getString("name");
-				result.add(new Employee(id, name));
-			}
-			return result;
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-	
-	@Override
-	public Long addEmployee(String name) {
-		final String sql = "INSERT INTO Employee(name) VALUES (?)";
-		
-		try {
-			PreparedStatement statement = connection.prepareStatement(sql);
-			statement.setString(1, name);
-			statement.executeUpdate();
-			return null;
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}
-	}
-	
-	@Override
-	public void deleteEmployee(Long id) {
-		final String sql = "DELETE FROM Employee WHERE id=?";
-		
-		try {
-			PreparedStatement statement = connection.prepareStatement(sql);
-			statement.setLong(1, id);
-			statement.executeUpdate();
-		} catch (Exception e) {
-			throw new RuntimeException(e);
-		}		
-	}*/
-	
+    	
 }
