@@ -11,11 +11,15 @@ import org.springframework.web.context.request.WebRequest;
 
 public class EmployeeBindingInitializer implements WebBindingInitializer  {
 
-	@Autowired
 	private StafferService stafferService;
-
+	
+    @Autowired
+    public EmployeeBindingInitializer(StafferService stafferService) {
+        this.stafferService = stafferService;
+    }	
+	
 	public void initBinder(WebDataBinder binder, WebRequest request) {
-		binder.registerCustomEditor(Employee.class, new EmployeeEditor());
+		binder.registerCustomEditor(Employee.class, new EmployeeEditor(stafferService));
 	}
 
 }
