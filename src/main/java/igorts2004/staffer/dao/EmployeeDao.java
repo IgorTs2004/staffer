@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface EmployeeDao {
 
+	public Employee getEmployee(long id);
+	
 	public List<Employee> getEmployeeList();
 
 	public long addEmployee(Employee employee);	

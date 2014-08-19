@@ -1,6 +1,9 @@
 package igorts2004.staffer.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Id;
 import javax.persistence.Column;
@@ -17,6 +20,10 @@ public class Employee {
 	
 	@Column(name = "name")
 	private String name;
+	
+	@ManyToOne(fetch = FetchType.LAZY, optional = true)
+	@JoinColumn(name = "superiorId")
+	private Employee superior;
 	
 	public Employee() {}
 	
@@ -39,6 +46,14 @@ public class Employee {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Employee getSuperior() {
+		return superior;
+	}
+
+	public void setSuperior(Employee superior) {
+		this.superior = superior;
 	}
 	
 }

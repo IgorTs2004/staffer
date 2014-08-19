@@ -21,6 +21,11 @@
 				<td><form:input path="name" /></td>
 			</tr>
 			<tr>
+				<td>Superior</td>
+				<td><form:select path="superior" items="${allEmployees}"
+						itemValue="id" itemLabel="name" /></td>
+			</tr>
+			<tr>
 				<td colspan="2"><input type="submit" value="Add" /></td>
 			</tr>
 		</table>

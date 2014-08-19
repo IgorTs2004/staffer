@@ -23,6 +23,11 @@ public class EmployeeController {
 	@Autowired
 	private StafferService stafferService;
 
+	@ModelAttribute("allEmployees")
+    public List<Employee> populateEmployees() {
+        return stafferService.getEmployeeList();
+    }
+	
 	@RequestMapping(value = "/employee", method = RequestMethod.GET)
 	public String setupForm(Model model) {
 		Date today = new Date();

@@ -15,6 +15,11 @@ public class StafferService {
 	private EmployeeDao employeeDao;
 	
 	@Transactional
+	public Employee getEmployee(long id) {
+		return employeeDao.getEmployee(id);		
+	}
+	
+	@Transactional
 	public List<Employee> getEmployeeList() {
 		return employeeDao.getEmployeeList();
 	}

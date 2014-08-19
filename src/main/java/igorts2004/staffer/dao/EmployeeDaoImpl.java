@@ -14,6 +14,11 @@ public class EmployeeDaoImpl implements EmployeeDao {
     @Autowired
     private SessionFactory sessionFactory;	
 	
+    @Override
+    public Employee getEmployee(long id) {
+    	return (Employee) sessionFactory.getCurrentSession().load(Employee.class, id);
+    }
+    
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Employee> getEmployeeList() {
