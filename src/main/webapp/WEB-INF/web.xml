@@ -31,11 +31,7 @@
 
 	<servlet-mapping>
 		<servlet-name>employee</servlet-name>
-		<url-pattern>/employee</url-pattern>
+		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-		<servlet-mapping>
-		<servlet-name>employee</servlet-name>
-		<url-pattern>/employee/delete</url-pattern>
-	</servlet-mapping>
-	
+
 </web-app>

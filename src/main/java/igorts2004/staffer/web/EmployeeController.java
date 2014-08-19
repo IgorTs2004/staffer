@@ -12,27 +12,35 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 
 @Controller
+@SessionAttributes("employee")
 public class EmployeeController {
 
 	@Autowired
 	private StafferService stafferService;
 
 	@RequestMapping(value = "/employee", method = RequestMethod.GET)
-	public String employeeList(Model model) {
+	public String setupForm(Model model) {
 		Date today = new Date();
 		model.addAttribute("today", today);
 
+		Employee employee = new Employee();
+		model.addAttribute("employee", employee);
+		
 		List<Employee> employees = stafferService.getEmployeeList();
 		model.addAttribute("employees", employees);
 		return "employee";
 	}
 
-	@RequestMapping(value = "/employee", method = RequestMethod.POST)
-	public String addEmployee(
-			@RequestParam("employeeName") String employeeName, Model model) {
-		stafferService.addEmployee(employeeName);
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	public String addContact(@ModelAttribute("employee") Employee employee,
+			BindingResult result) {
+		stafferService.addEmployee(employee);
+
 		return "redirect:/employee";
 	}
 

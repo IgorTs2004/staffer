@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page isELIgnored="false"%>
 
 <html>
@@ -9,12 +10,21 @@
 
 <body>
 	<h2>This is employee.jsp</h2>
-	Today is <fmt:formatDate value="${today}" pattern="yyyy-MM-dd" />.
+	Today is
+	<fmt:formatDate value="${today}" pattern="yyyy-MM-dd" />
+	.
 
-	<form method="post">
-		Employee Name <input type="text" name="employeeName" value="${employeeName}" />
-		<input type="submit" value="Add" />
-	</form>
+	<form:form method="post" action="add" modelAttribute="employee">
+		<table>
+			<tr>
+				<td>Employee Name</td>
+				<td><form:input path="name" /></td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="submit" value="Add" /></td>
+			</tr>
+		</table>
+	</form:form>
 
 	<table border="1">
 		<tr>

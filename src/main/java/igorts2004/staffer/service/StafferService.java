@@ -20,9 +20,9 @@ public class StafferService {
 	}
 	
 	@Transactional
-	public long addEmployee(String name) {
-		return employeeDao.addEmployee(name);
-	}
+	public long addEmployee(Employee employee) {
+		return employeeDao.addEmployee(employee);
+	}	
 	
 	@Transactional
 	public void deleteEmployee(long id) {

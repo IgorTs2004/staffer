@@ -21,8 +21,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	}
 	
 	@Override
-	public long addEmployee(String name) {
-		Employee employee = new Employee(0, name);
+	public long addEmployee(Employee employee) {
 		return (Long) sessionFactory.getCurrentSession().save(employee);
 	}
 	
