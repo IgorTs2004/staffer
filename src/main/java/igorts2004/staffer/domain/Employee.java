@@ -27,11 +27,6 @@ public class Employee {
 	
 	public Employee() {}
 	
-	public Employee(long id, String name) {
-		this.id = id;
-		this.name = name;
-	}
-
 	public long getId() {
 		return id;
 	}

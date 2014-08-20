@@ -1,7 +1,9 @@
 package igorts2004.staffer.service;
 
 import igorts2004.staffer.dao.EmployeeDao;
+import igorts2004.staffer.dao.ProjectDao;
 import igorts2004.staffer.domain.Employee;
+import igorts2004.staffer.domain.Project;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,9 @@ public class StafferService {
 
 	@Autowired
 	private EmployeeDao employeeDao;
+	
+	@Autowired
+	private ProjectDao projectDao;
 	
 	@Transactional
 	public Employee getEmployee(long id) {
@@ -32,6 +37,21 @@ public class StafferService {
 	@Transactional
 	public void deleteEmployee(long id) {
 		employeeDao.deleteEmployee(id);
+	}
+
+	@Transactional
+	public List<Project> getProjectList() {
+		return projectDao.getProjectList();
+	}
+
+	@Transactional
+	public long addProject(Project project) {
+		return projectDao.addProject(project);
+	}
+
+	@Transactional
+	public void deleteProject(long id) {
+		projectDao.deleteProject(id);
 	}
 	
 }

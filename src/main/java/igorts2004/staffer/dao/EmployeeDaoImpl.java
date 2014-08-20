@@ -33,9 +33,9 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	@Override
 	public void deleteEmployee(long id) {
 		// TODO Query can be used to delete by id
-		Employee contact = (Employee) sessionFactory.getCurrentSession().load(Employee.class, id);
-        if (null != contact) {
-            sessionFactory.getCurrentSession().delete(contact);
+		Employee employee = (Employee) sessionFactory.getCurrentSession().load(Employee.class, id);
+        if (null != employee) {
+            sessionFactory.getCurrentSession().delete(employee);
         }
 	}
     	

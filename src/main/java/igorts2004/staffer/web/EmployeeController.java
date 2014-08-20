@@ -23,6 +23,7 @@ public class EmployeeController {
 	@Autowired
 	private StafferService stafferService;
 
+	// TODO This is not needed - there is "employees" attribute already
 	@ModelAttribute("allEmployees")
     public List<Employee> populateEmployees() {
         return stafferService.getEmployeeList();
