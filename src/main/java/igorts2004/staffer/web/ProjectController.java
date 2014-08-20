@@ -1,10 +1,8 @@
 package igorts2004.staffer.web;
 
-import igorts2004.staffer.domain.Employee;
 import igorts2004.staffer.domain.Project;
 import igorts2004.staffer.service.StafferService;
 
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;

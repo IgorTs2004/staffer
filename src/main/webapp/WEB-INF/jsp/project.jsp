@@ -26,11 +26,18 @@
 		<tr>
 			<th>id</th>
 			<th>name</th>
+			<th>participants</th>
 		</tr>
 		<c:forEach items="${projects}" var="project">
 			<tr>
 				<td>${project.id}</td>
 				<td>${project.name}</td>
+				<td>
+					<c:forEach items="${project.participants}" var="participant">
+						${participant.name}<br>
+					</c:forEach>
+					<a href="project/manage-participants?id=${project.id}">Manage participants</a>
+				</td>
 				<td><a href="project/delete?id=${project.id}">Delete</a></td>
 			</tr>
 		</c:forEach>

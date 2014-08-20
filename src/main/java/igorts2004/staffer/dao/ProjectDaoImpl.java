@@ -1,6 +1,5 @@
 package igorts2004.staffer.dao;
 
-import igorts2004.staffer.domain.Employee;
 import igorts2004.staffer.domain.Project;
 
 import java.util.List;

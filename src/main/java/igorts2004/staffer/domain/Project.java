@@ -1,9 +1,16 @@
 package igorts2004.staffer.domain;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -11,14 +18,19 @@ import javax.persistence.Table;
 public class Project {
 
 	@Id
-    @Column(name = "id")
-    @GeneratedValue	
+	@Column(name = "id")
+	@GeneratedValue
 	private long id;
-	
+
 	@Column(name = "name")
 	private String name;
-	
-	public Project() {}
+
+	@ManyToMany(targetEntity=Employee.class, fetch = FetchType.EAGER)
+	@JoinTable(name = "ProjectParticipant", joinColumns = { @JoinColumn(name = "projectId") }, inverseJoinColumns = { @JoinColumn(name = "employeeId") })
+	private Set<Employee> participants = new LinkedHashSet<>();
+
+	public Project() {
+	}
 
 	public long getId() {
 		return id;
@@ -34,6 +46,14 @@ public class Project {
 
 	public void setName(String name) {
 		this.name = name;
-	}	
-	
+	}
+
+	public Set<Employee> getParticipants() {
+		return participants;
+	}
+
+	public void setParticipants(Set<Employee> participants) {
+		this.participants = participants;
+	}
+
 }
