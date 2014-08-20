@@ -5,16 +5,16 @@
 
 <html>
 <head>
-<title>Employee list</title>
+<title>Employee List</title>
 </head>
 
 <body>
-	<h2>This is employee.jsp</h2>
+	<h2>Employee List</h2>
 	Today is
 	<fmt:formatDate value="${today}" pattern="yyyy-MM-dd" />
 	.
 
-	<form:form method="post" action="add" modelAttribute="employee">
+	<form:form method="post" action="employee/add" modelAttribute="employee">
 		<table>
 			<tr>
 				<td>Employee Name</td>
@@ -35,11 +35,13 @@
 		<tr>
 			<th>id</th>
 			<th>name</th>
+			<th>superior</th>
 		</tr>
 		<c:forEach items="${employees}" var="employee">
 			<tr>
 				<td>${employee.id}</td>
 				<td>${employee.name}</td>
+				<td>${employee.superior.name}</td>
 				<td><a href="employee/delete?id=${employee.id}">Delete</a></td>
 			</tr>
 		</c:forEach>

@@ -41,7 +41,7 @@ public class EmployeeController {
 		return "employee";
 	}
 
-	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/employee/add", method = RequestMethod.POST)
 	public String addContact(@ModelAttribute("employee") Employee employee,
 			BindingResult result) {
 		stafferService.addEmployee(employee);
