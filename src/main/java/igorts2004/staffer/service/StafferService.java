@@ -40,6 +40,11 @@ public class StafferService {
 	}
 
 	@Transactional
+	public Project getProject(long id) {
+		return projectDao.getProject(id);
+	}
+	
+	@Transactional
 	public List<Project> getProjectList() {
 		return projectDao.getProjectList();
 	}
@@ -52,6 +57,13 @@ public class StafferService {
 	@Transactional
 	public void deleteProject(long id) {
 		projectDao.deleteProject(id);
+	}
+	
+	@Transactional
+	public void removeParticipant(long projectId, long employeeId) {
+		Project project = projectDao.getProject(projectId);
+		Employee employee = employeeDao.getEmployee(employeeId);
+		project.getParticipants().remove(employee);
 	}
 	
 }

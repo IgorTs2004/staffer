@@ -1,6 +1,5 @@
 package igorts2004.staffer.domain;
 
-import java.util.LinkedHashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -27,7 +26,7 @@ public class Project {
 
 	@ManyToMany(targetEntity=Employee.class, fetch = FetchType.EAGER)
 	@JoinTable(name = "ProjectParticipant", joinColumns = { @JoinColumn(name = "projectId") }, inverseJoinColumns = { @JoinColumn(name = "employeeId") })
-	private Set<Employee> participants = new LinkedHashSet<>();
+	private Set<Employee> participants;
 
 	public Project() {
 	}

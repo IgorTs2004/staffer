@@ -16,7 +16,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	
     @Override
     public Employee getEmployee(long id) {
-    	return (Employee) sessionFactory.getCurrentSession().load(Employee.class, id);
+    	return (Employee) sessionFactory.getCurrentSession().get(Employee.class, id);
     }
     
 	@SuppressWarnings("unchecked")

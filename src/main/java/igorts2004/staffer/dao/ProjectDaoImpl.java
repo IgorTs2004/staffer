@@ -13,7 +13,12 @@ public class ProjectDaoImpl implements ProjectDao {
 
     @Autowired
     private SessionFactory sessionFactory;	
-	    
+
+    @Override
+    public Project getProject(long id) {
+    	return (Project) sessionFactory.getCurrentSession().get(Project.class, id);
+    }
+    
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Project> getProjectList() {

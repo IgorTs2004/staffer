@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface ProjectDao {
 
+	public Project getProject(long id);
+	
 	public List<Project> getProjectList();
 
 	public long addProject(Project project);

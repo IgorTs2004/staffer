@@ -36,7 +36,7 @@
 					<c:forEach items="${project.participants}" var="participant">
 						${participant.name}<br>
 					</c:forEach>
-					<a href="project/manage-participants?id=${project.id}">Manage participants</a>
+					<a href="participants?projectId=${project.id}">Manage participants</a>
 				</td>
 				<td><a href="project/delete?id=${project.id}">Delete</a></td>
 			</tr>
