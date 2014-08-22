@@ -14,19 +14,20 @@ import javax.persistence.GeneratedValue;
 public class Employee {
 
 	@Id
-    @Column(name = "id")
-    @GeneratedValue	
+	@Column(name = "id")
+	@GeneratedValue
 	private long id;
-	
+
 	@Column(name = "name")
 	private String name;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY, optional = true)
 	@JoinColumn(name = "superiorId")
 	private Employee superior;
-	
-	public Employee() {}
-	
+
+	public Employee() {
+	}
+
 	public long getId() {
 		return id;
 	}
@@ -50,5 +51,17 @@ public class Employee {
 	public void setSuperior(Employee superior) {
 		this.superior = superior;
 	}
-	
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) return true;
+		if (obj == null) return false;
+		return getClass().equals(obj.getClass()) && (id ==((Employee)obj).getId());
+	}
+
+	@Override
+	public int hashCode() {
+		return ((Long)id).hashCode();
+	}
+
 }

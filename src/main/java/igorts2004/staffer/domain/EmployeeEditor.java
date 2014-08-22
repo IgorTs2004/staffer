@@ -13,7 +13,7 @@ public class EmployeeEditor extends PropertyEditorSupport {
 	}
 
 	public void setAsText(String text) throws IllegalArgumentException {
-		int id = Integer.parseInt(text);
+		long id = Long.parseLong(text);
 		Employee employee = stafferService.getEmployee(id);
 		setValue(employee);
 	}

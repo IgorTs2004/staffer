@@ -10,7 +10,8 @@
 <body>
 	<h2>Manage Participants</h2>
 
-	<form:form method="post" action="participants/add" modelAttribute="project">
+	<form:form method="post" action="participants/add"
+		modelAttribute="project">
 		<table>
 			<tr>
 				<td>Project Name</td>
@@ -18,8 +19,10 @@
 			</tr>
 			<tr>
 				<td>Participants</td>
-				<td><form:select path="participants" multiple="true" items="${allEmployees}"
-						itemValue="id" itemLabel="name" /></td>
+				<td>
+					<form:select path="participants" multiple="true"
+						items="${allEmployees}" itemValue="id" itemLabel="name" />
+				</td>
 			</tr>
 			<tr>
 				<td colspan="2"><input type="submit" value="Add" /></td>
@@ -38,7 +41,8 @@
 				<td>${employee.id}</td>
 				<td>${employee.name}</td>
 				<td>${employee.superior.name}</td>
-				<td><a href="participants/remove?projectId=${project.id}&employeeId=${employee.id}">Remove</a></td>
+				<td><a
+					href="participants/remove?projectId=${project.id}&employeeId=${employee.id}">Remove</a></td>
 			</tr>
 		</c:forEach>
 	</table>
