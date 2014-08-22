@@ -64,26 +64,19 @@ public class ParticipantsController {
 				});
 	}*/
 
-	@RequestMapping(value = "/participants", method = RequestMethod.GET)
+	@RequestMapping(value = "/project-edit", method = RequestMethod.GET)
 	public String setupForm(@RequestParam("projectId") Long projectId,
 			Model model) {
 		Project project = stafferService.getProject(projectId);
 		model.addAttribute("project", project);
-		return "participants";
+		return "project-edit";
 	}
 
-	@RequestMapping(value = "/participants/add", method = RequestMethod.POST)
+	@RequestMapping(value = "/project-edit/update", method = RequestMethod.POST)
 	public String addContact(@ModelAttribute("project") Project project,
 			BindingResult result) {
-		// stafferService.addParticipant(project);
-		return "redirect:/participants?projectId=" + project.getId();
-	}
-
-	@RequestMapping(value = "/participants/remove", method = RequestMethod.GET)
-	public String removeParticipant(@RequestParam("projectId") Long projectId,
-			@RequestParam("employeeId") Long employeeId) {
-		stafferService.removeParticipant(projectId, employeeId);
-		return "redirect:/participants?projectId=" + projectId;
+		stafferService.updateProject(project);
+		return "redirect:/project";
 	}
 
 }

@@ -65,5 +65,10 @@ public class StafferService {
 		Employee employee = employeeDao.getEmployee(employeeId);
 		project.getParticipants().remove(employee);
 	}
+
+	@Transactional
+	public void updateProject(Project project) {
+		projectDao.updateProject(project);
+	}
 	
 }

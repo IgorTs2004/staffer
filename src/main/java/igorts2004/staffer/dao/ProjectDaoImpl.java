@@ -37,6 +37,11 @@ public class ProjectDaoImpl implements ProjectDao {
         if (null != project) {
             sessionFactory.getCurrentSession().delete(project);
         }
-	}	
+	}
+	
+	@Override
+	public void updateProject(Project project) {
+		sessionFactory.getCurrentSession().update(project);
+	}
 	
 }

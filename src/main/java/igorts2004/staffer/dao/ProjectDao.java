@@ -14,4 +14,6 @@ public interface ProjectDao {
 
 	public void deleteProject(long id);
 
+	public void updateProject(Project project);
+
 }
