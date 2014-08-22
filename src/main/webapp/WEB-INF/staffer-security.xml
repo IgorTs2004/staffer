@@ -1,0 +1,30 @@
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+	
+	<http auto-config="true">
+		<intercept-url pattern="/employee*" access="ROLE_MANAGER,ROLE_ANONYMOUS" />
+		<intercept-url pattern="/employee/add*" access="ROLE_DIRECTOR" />
+		<intercept-url pattern="/employee/delete*" access="ROLE_DIRECTOR" />
+		
+		<intercept-url pattern="/project*" access="ROLE_MANAGER,ROLE_ANONYMOUS" />
+		<intercept-url pattern="/project/add*" access="ROLE_MANAGER" />
+		<intercept-url pattern="/project/delete*" access="ROLE_MANAGER" />
+		
+		<intercept-url pattern="/project-edit*" access="ROLE_MANAGER" />
+		<intercept-url pattern="/project-edit/update*" access="ROLE_MANAGER" />
+	</http>
+	
+	<authentication-manager>
+		<authentication-provider>
+			<user-service>
+				<user name="director" password="director" authorities="ROLE_DIRECTOR,ROLE_MANAGER" />
+				<user name="manager" password="manager" authorities="ROLE_MANAGER" />
+			</user-service>
+		</authentication-provider>
+	</authentication-manager>
+	
+</beans:beans>

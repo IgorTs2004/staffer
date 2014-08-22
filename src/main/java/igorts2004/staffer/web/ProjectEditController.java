@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
 @SessionAttributes("project")
-public class ParticipantsController {
+public class ProjectEditController {
 
 	@Autowired
 	private StafferService stafferService;
