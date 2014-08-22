@@ -1,5 +1,6 @@
 package igorts2004.staffer.web;
 
+import igorts2004.staffer.domain.Employee;
 import igorts2004.staffer.domain.Project;
 import igorts2004.staffer.service.StafferService;
 
@@ -22,6 +23,11 @@ public class ProjectController {
 	@Autowired
 	private StafferService stafferService;
 
+	@ModelAttribute("allEmployees")
+	public List<Employee> populateEmployees() {
+		return stafferService.getEmployeeList();
+	}	
+	
 	@RequestMapping(value = "/project", method = RequestMethod.GET)
 	public String setupForm(Model model) {
 		Project project = new Project();

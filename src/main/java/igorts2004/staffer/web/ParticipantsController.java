@@ -39,7 +39,7 @@ public class ParticipantsController {
 	 * EmployeeEditor(stafferService)); }
 	 */
 
-	@InitBinder
+	/*@InitBinder
 	protected void initBinder(WebDataBinder binder) throws Exception {
 		binder.registerCustomEditor(Set.class, "participants",
 				new CustomCollectionEditor(Set.class) {
@@ -62,7 +62,7 @@ public class ParticipantsController {
 						return null;
 					}
 				});
-	}
+	}*/
 
 	@RequestMapping(value = "/participants", method = RequestMethod.GET)
 	public String setupForm(@RequestParam("projectId") Long projectId,
