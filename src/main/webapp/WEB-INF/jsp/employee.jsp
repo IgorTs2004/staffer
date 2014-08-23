@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ page isELIgnored="false"%>
 
@@ -9,10 +8,9 @@
 </head>
 
 <body>
+	<a href="<c:url value="/j_spring_security_logout" />">Logout</a>
+
 	<h2>Employee List</h2>
-	Today is
-	<fmt:formatDate value="${today}" pattern="yyyy-MM-dd" />
-	.
 
 	<form:form method="post" action="employee/add" modelAttribute="employee">
 		<table>

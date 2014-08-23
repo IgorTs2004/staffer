@@ -8,6 +8,8 @@
 </head>
 
 <body>
+	<a href="<c:url value="/j_spring_security_logout" />">Logout</a>
+	
 	<h2>Project List</h2>
 
 	<form:form method="post" action="project/add" modelAttribute="project">
