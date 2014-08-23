@@ -31,6 +31,11 @@ public class Project {
 	public Project() {
 	}
 
+	public Project(long id, String name) {
+		this.id = id;
+		this.name = name;
+	}
+
 	public long getId() {
 		return id;
 	}
