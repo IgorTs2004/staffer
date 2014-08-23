@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib prefix="security" uri="http://www.springframework.org/security/tags" %>
 <%@ page isELIgnored="false"%>
 
 <html>
@@ -12,6 +13,7 @@
 
 	<h2>Employee List</h2>
 
+	<security:authorize ifAllGranted="ROLE_DIRECTOR">
 	<form:form method="post" action="employee/add" modelAttribute="employee">
 		<table>
 			<tr>
@@ -28,6 +30,7 @@
 			</tr>
 		</table>
 	</form:form>
+	</security:authorize>
 
 	<table border="1">
 		<tr>
@@ -40,7 +43,9 @@
 				<td>${employee.id}</td>
 				<td>${employee.name}</td>
 				<td>${employee.superior.name}</td>
+				<security:authorize ifAllGranted="ROLE_DIRECTOR">
 				<td><a href="employee/delete?id=${employee.id}">Delete</a></td>
+				</security:authorize>
 			</tr>
 		</c:forEach>
 	</table>
