@@ -1,8 +1,14 @@
 package igorts2004.staffer.dao;
 
 import static org.junit.Assert.*;
+
+import java.util.List;
+
 import igorts2004.staffer.domain.Project;
 
+import static org.hamcrest.Matchers.*;
+
+import org.hibernate.ObjectNotFoundException;
 import org.hibernate.SessionFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,18 +25,86 @@ public class ProjectDaoTests {
 	@Autowired
 	private ProjectDao projectDao;
 	
-	final String TEST_NAME = "Test project";
-	
 	@Test
 	public void getProject_ExistingProject_ProjectIsReturned() {
-		Project project = new Project(TEST_NAME);
+		Project project = new Project("Test project");
 		long projectId = createProject(project);
 		
 		Project result = projectDao.getProject(projectId);
 		
 		assertEquals(project, result);
 	}
+	
+	@Test
+	public void getProject_NonExistantProject_NullIsReturned() {
+		final long NON_EXISTANT_ID = 1234567890;
+		
+		Project result = projectDao.getProject(NON_EXISTANT_ID);
+		
+		assertNull(result);
+	}
 
+	@Test
+	public void getProjectList_ProjectsExist_ProjectsAreReturned() {
+		Project project1 = new Project("Test project 1");
+		Project project2 = new Project("Test project 2");
+		createProject(project1);
+		createProject(project2);
+		
+		List<Project> result = projectDao.getProjectList();
+		
+		assertThat(result, hasItems(project1, project2));
+	}
+	
+	@Test
+	public void addProject_NewProject_ProjectIsAdded() {
+		Project project = new Project("Test project");
+		
+		long projectId = projectDao.addProject(project);
+		
+		Project result = projectDao.getProject(projectId);
+		assertEquals(project,  result);
+	}
+	
+	@Test
+	public void deleteProject_ExistingProject_ProjectIsDeleted() {
+		Project project = new Project("Test project");
+		long projectId = createProject(project);
+		
+		projectDao.deleteProject(projectId);
+		
+		Project result = projectDao.getProject(projectId);		
+		assertNull(result);
+	}
+	
+	@Test(expected = ObjectNotFoundException.class)
+	public void deleteProject_NonExistantProject_ExceptionIsThrown() {
+		final long NON_EXISTANT_ID = 1234567890;
+		
+		projectDao.deleteProject(NON_EXISTANT_ID);
+	}
+	
+	@Test
+	public void updateProject_NewName_NameIsChanged() {
+		final String NEW_NAME = "New name";
+		Project project = new Project("Test project");
+		long projectId = createProject(project);
+		
+		project.setName(NEW_NAME);
+		projectDao.updateProject(project);
+		
+		Project result = projectDao.getProject(projectId);		
+		assertEquals(NEW_NAME, result.getName());
+	}
+	
+	@Test(expected = ObjectNotFoundException.class)
+	public void updateProject_NonExistantProject_ExceptionIsThrown() {
+		Project nonExistentProject = new Project("Non existant");
+		
+		nonExistentProject.setName("New name");
+		projectDao.updateProject(nonExistentProject);
+	}
+	
 	// --- Helper methods ---
 		
 	@Autowired
