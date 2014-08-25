@@ -19,6 +19,13 @@ public class StafferService {
 	@Autowired
 	private ProjectDao projectDao;
 	
+	public StafferService() {}
+
+	public StafferService(EmployeeDao employeeDao, ProjectDao projectDao) {
+		this.employeeDao = employeeDao;
+		this.projectDao = projectDao;
+	}
+
 	@Transactional
 	public Employee getEmployee(long id) {
 		return employeeDao.getEmployee(id);		
@@ -59,13 +66,6 @@ public class StafferService {
 		projectDao.deleteProject(id);
 	}
 	
-	@Transactional
-	public void removeParticipant(long projectId, long employeeId) {
-		Project project = projectDao.getProject(projectId);
-		Employee employee = employeeDao.getEmployee(employeeId);
-		project.getParticipants().remove(employee);
-	}
-
 	@Transactional
 	public void updateProject(Project project) {
 		projectDao.updateProject(project);
