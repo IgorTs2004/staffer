@@ -31,9 +31,6 @@ public class EmployeeController {
 
 	@RequestMapping(value = "/employee", method = RequestMethod.GET)
 	public String setupForm(Model model) {
-		Date today = new Date();
-		model.addAttribute("today", today);
-
 		Employee employee = new Employee();
 		model.addAttribute("employee", employee);
 
@@ -55,5 +52,5 @@ public class EmployeeController {
 		stafferService.deleteEmployee(id);
 		return "redirect:/employee";
 	}
-
+	
 }

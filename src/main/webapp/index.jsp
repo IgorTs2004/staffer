@@ -13,6 +13,12 @@
 	<br>
 	<a href="project">Project List</a>
 	<br>
+	<br>
+	<a href="employee-from-ws">Employee List from Web Service</a>
+	<br>
+	<a href="project-from-ws">Project List from Web Service</a>
+	<br>
+	<br>
 	<a href="<c:url value="/j_spring_security_logout" />">Logout</a>
 	</security:authorize>
 	
