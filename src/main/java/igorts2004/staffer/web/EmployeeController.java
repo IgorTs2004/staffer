@@ -25,10 +25,10 @@ public class EmployeeController {
 
 	// TODO This is not needed - there is "employees" attribute already
 	@ModelAttribute("allEmployees")
-    public List<Employee> populateEmployees() {
-        return stafferService.getEmployeeList();
-    }
-	
+	public List<Employee> populateEmployees() {
+		return stafferService.getEmployeeList();
+	}
+
 	@RequestMapping(value = "/employee", method = RequestMethod.GET)
 	public String setupForm(Model model) {
 		Date today = new Date();
@@ -36,7 +36,7 @@ public class EmployeeController {
 
 		Employee employee = new Employee();
 		model.addAttribute("employee", employee);
-		
+
 		List<Employee> employees = stafferService.getEmployeeList();
 		model.addAttribute("employees", employees);
 		return "employee";
