@@ -20,5 +20,14 @@ public class FromWSController {
 		model.addAttribute("employees", employees);
 		return "employee-from-ws";
 	}
-		
+	
+	@RequestMapping(value = "/project-from-ws", method = RequestMethod.GET)
+	public String projectListFromWS(Model model) {
+		final String url="http://localhost:8080/staffer/ws/project";
+		RestTemplate restTemplate = new RestTemplate();
+		List<LinkedHashMap> projects=restTemplate.getForObject(url, List.class);
+		model.addAttribute("projects", projects);
+		return "project-from-ws";
+	}	
+	
 }
